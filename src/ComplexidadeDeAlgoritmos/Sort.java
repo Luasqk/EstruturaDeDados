@@ -1,5 +1,6 @@
 package ComplexidadeDeAlgoritmos;
 
+
 public class Sort {
 
    public static void InsertionSort(int[] vet){
@@ -25,7 +26,40 @@ public class Sort {
        }
     }
 
-    public static void mergeSort(int[] vet, int inicio, int fim) {}
+    public static void mergeSort(int[] vet, int inicio, int meio, int fim) {
+        int[] auxiliar = new int[fim - inicio + 1];
+        int i = inicio;
+        int j = meio + 1;
+        int k = 0;
+
+        while(i <= meio && j <= fim){
+            if(vet[i] <= vet[j]){
+                auxiliar[k] = vet[i];
+                i++;
+            }
+            else{
+                auxiliar[k] = vet[j];
+                j++;
+            }
+            k++;
+        }
+
+        while(i <= meio){
+            auxiliar[k] = vet[i];
+            i++;
+            k++;
+        }
+
+        while (j <= fim){
+            auxiliar[k] = vet[j];
+            j++;
+            k++;
+        }
+
+        for(i = inicio; i <= fim; i++) {
+            vet[i] = auxiliar[i - inicio];
+        }
+    }
 
     static void main() {
 
